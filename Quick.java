@@ -2,6 +2,19 @@ import java.util.*;
 public class Quick{
   public static int quickselect(int []data, int k){
     int index = partition(data,0,data.length-1);
+    int start = 0;
+    int end = data.length -1;
+    while(index != k){
+      if(index > k){
+        index = partition(data,index, end);
+
+      }
+      if(index < k){
+        index = partition(data,start,index -1);
+      }
+
+    }
+    return data[index];
 
   }
   public static int partition (int [] data, int start, int end){
@@ -36,4 +49,9 @@ public class Quick{
     }
     return start;
   }
+  public static void main(String[] args) {
+    int[]ary = { 2, 10, 15, 23, 0,  5};
+    System.out.println(quickselect(ary,3));
+  }
+
 }
