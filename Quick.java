@@ -1,28 +1,39 @@
+import java.util.*;
 public class Quick{
   public static int quickselect(int []data, int k){
-    if (partition(data,))
+    int index = partition(data,0,data.length-1);
+
   }
   public static int partition (int [] data, int start, int end){
-    int index = (int)(Math.random() * end - start +1);
+    Random random = new Random();
+    int index = Math.abs(random.nextInt()) % (end - start + 1);
     int value = data[index];
-    int [] test = new int [end -start +1];
-    int stop = end -start +1;
+    int placeholder =0;
     int beg = start;
-    for (int i = beg; i < stop; i++){
-      if (data[i] > value){
-        test[end] = data[i];
+    data[index] = data[start];
+    data[start] = value;
+    start += 1;
+    while (start < end){
+      if (data[start] < value){
+        start +=1;
+      }
+      if (data[start] > value){
+        placeholder = data[end];
+        data[end] = data[start];
+        data[start] = placeholder;
         end -=1;
       }
-      if (data[i] < data[index]){
-        test[start] = data[i];
-        start += 1;
-      }
     }
-    test[start] = value;
-    String ans = "";
-    for(int r = 0; r < test.length; r++){
-        ans += test[r] + " ";
+    if(data[start] < value){
+      data[beg] = data[start];
+      data[start] = value;
+      return start;
+    }
+    if(data[start] > value){
+      data[beg] = data[start -1];
+      data[start-1] = value;
+      return start -1;
     }
     return start;
-}
+  }
 }
