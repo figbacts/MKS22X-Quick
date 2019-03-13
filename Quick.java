@@ -26,7 +26,7 @@ public class Quick{
     int value = data[index];
     int placeholder =0;
     int beg = start;
-    System.out.println(index);
+    //System.out.println(index);
     data[index] = data[start];
     data[start] = value;
     start += 1;
@@ -42,24 +42,42 @@ public class Quick{
         end -=1;
       }
     }
-System.out.println(start);
+//System.out.println(start);
     if(data[start] < value){
       data[beg] = data[start];
       data[start] = value;
-      System.out.println(Arrays.toString(data));
+      //System.out.println(Arrays.toString(data));
       return start;
     }
     if(data[start] > value){
       data[beg] = data[start -1];
       data[start-1] = value;
-      System.out.println(Arrays.toString(data));
+      //System.out.println(Arrays.toString(data));
       return start -1;
     }
     return start;
   }
+  public static void quicksort(int[] data){
+    quicksortH(data,0,data.length-1);
+  }
+  private static void quicksortH(int []data, int lo, int hi){
+    if(lo >= hi){
+      return;
+    }
+      int pivot = partition(data,lo,hi);
+      quicksortH(data,lo,pivot-1);
+      quicksortH(data,pivot +1, hi);
+    }
+
   public static void main(String[] args) {
-    int[]ary = { 2, 10, 15, 23, 0,  5};
-    System.out.println(quickselect(ary,4));
+    //Random random = new Random();
+    int[]ary ={90, 15, 53, 81, 27, 88, 94, 15};//, 19 41, 4, 41, 71, 0, 67, 40, 81, 44, 11, 85};
+    //for(int i = 0; i <20; i++){
+    //  ary[i] = Math.abs(random.nextInt()) % 100;
+    //}
+    //System.out.println(Arrays.toString(ary));
+    System.out.println(partition(ary,0,ary.length-1));
+    //System.out.println(Arrays.toString(ary));
   }
 
 }
