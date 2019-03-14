@@ -32,7 +32,7 @@ public class Quick{
     start += 1;
     while (start < end){
       //System.out.println(start);
-      if (data[start] < value){
+      if (data[start] <= value){
         start +=1;
       }
       if (data[start] > value){
@@ -71,7 +71,7 @@ public class Quick{
 
   public static void main(String[] args) {
     //Random random = new Random();
-    int[]ary ={90, 15, 53, 81, 27, 88, 94, 15};//, 19 41, 4, 41, 71, 0, 67, 40, 81, 44, 11, 85};
+    int[]ary ={90, 15, 15, 15, 15, 88, 94, 15};//, 19 41, 4, 41, 71, 0, 67, 40, 81, 44, 11, 85};
     //for(int i = 0; i <20; i++){
     //  ary[i] = Math.abs(random.nextInt()) % 100;
     //}
