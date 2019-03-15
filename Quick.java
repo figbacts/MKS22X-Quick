@@ -5,9 +5,9 @@ public class Quick{
     int end = data.length -1;
     int index = -1;
     while(index != k){
-      System.out.println(Arrays.toString(data));
+      //System.out.println(Arrays.toString(data));
       index = partition(data,start,end);
-      System.out.println(index);
+      //System.out.println(index);
       if(index > k){
         end = index -1;
       }
@@ -16,7 +16,7 @@ public class Quick{
       }
 
     }
-    System.out.println(Arrays.toString(data));
+    //System.out.println(Arrays.toString(data));
     return data[index];
 
   }
