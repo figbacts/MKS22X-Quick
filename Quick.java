@@ -5,9 +5,9 @@ public class Quick{
     int end = data.length -1;
     int index = -1;
     while(index != k){
-      System.out.println(Arrays.toString(data));
+      //System.out.println(Arrays.toString(data));
       index = partition(data,start,end);
-      System.out.println(index);
+      //System.out.println(index);
       if(index > k){
         end = index -1;
       }
@@ -16,7 +16,7 @@ public class Quick{
       }
 
     }
-    System.out.println(Arrays.toString(data));
+    //System.out.println(Arrays.toString(data));
     return data[index];
 
   }
@@ -74,14 +74,26 @@ public class Quick{
     quicksortH(data,0,data.length-1);
   }
   private static void quicksortH(int []data, int lo, int hi){
-    if(lo >= hi){
+    if (hi - lo < 180){
+      insertionsort(data,lo,hi);
       return;
     }
       int pivot = partition(data,lo,hi);
       quicksortH(data,lo,pivot-1);
       quicksortH(data,pivot +1, hi);
     }
-
+    public static void insertionsort(int[] data, int lo,int hi){
+      int len = hi - lo + 1;
+    for (int i = 1; i<len; i++){
+      int hold = data[lo + i];
+      int index = i;
+    while (index > 0 &&  hold <data[lo + index -1]){
+      data[lo + index] = data[lo + index -1];
+      index --;
+    }
+    data[lo + index] = hold;
+    }
+    }
     public static void main(String[]args){
     System.out.println("Size\t\tMax Value\tquick/builtin ratio ");
     int[]MAX_LIST = {1000000000,500,10};
